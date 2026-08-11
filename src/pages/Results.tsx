@@ -109,7 +109,7 @@ export function Results() {
 
   const tabs = [
     { id: 'linkedin', label: 'LinkedIn', icon: Linkedin, data: results.linkedin_posts },
-    { id: 'twitter', label: 'Twitter', icon: Twitter, data: results.twitter_tweets },
+    { id: 'twitter', label: 'X', icon: XLogo, data: results.twitter_tweets },
     { id: 'instagram', label: 'Instagram', icon: Instagram, data: results.instagram_captions },
     { id: 'blog', label: 'Blog Summary', icon: FileText, data: [results.blog_summary] },
     { id: 'email', label: 'Email', icon: Mail, data: [results.email_newsletter] },
@@ -360,8 +360,8 @@ function ResultCard({ text, index, onCopy, copied, platform }: { key?: string | 
       </div>
 
       {/* Action buttons */}
-      <div className="flex items-center justify-end gap-3 px-2">
-        <span className="text-xs text-slate-400 font-medium mr-auto">{text.length} chars</span>
+      <div className="flex flex-wrap items-center justify-end gap-2 px-1">
+        <span className="text-xs text-slate-400 font-medium mr-auto mb-2 sm:mb-0 w-full sm:w-auto">{text.length} chars</span>
         
         {(platform === 'twitter' || platform === 'linkedin' || (typeof navigator !== 'undefined' && navigator.share)) && (
           <button
@@ -375,28 +375,28 @@ function ResultCard({ text, index, onCopy, copied, platform }: { key?: string | 
                 navigator.share({ title: 'Super-Post Post', text: text }).catch(console.error);
               }
             }}
-            className="flex items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm"
+            className="flex flex-1 sm:flex-none justify-center items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm"
             title="Share to Platform"
           >
             <ExternalLink className="h-4 w-4" />
-            <span>Share</span>
+            <span className="hidden sm:inline text-xs sm:text-sm">Share</span>
           </button>
         )}
         <button
           onClick={handleDownload}
-          className="flex items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm"
+          className="flex flex-1 sm:flex-none justify-center items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm"
           title="Download as Image"
         >
           <Download className="h-4 w-4" />
-          <span>Save Image</span>
+          <span className="hidden sm:inline text-xs sm:text-sm">Save Image</span>
         </button>
 
         <button
           onClick={onCopy}
-          className="flex items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-violet-600 transition-colors bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm"
+          className="flex flex-1 sm:flex-none justify-center items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-violet-600 transition-colors bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm"
         >
           {copied ? <CheckCircle2 className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
-          {copied ? <span className="text-emerald-600">Copied!</span> : <span>Copy Text</span>}
+          {copied ? <span className="text-emerald-600 hidden sm:inline text-xs sm:text-sm">Copied!</span> : <span className="hidden sm:inline text-xs sm:text-sm">Copy Text</span>}
         </button>
       </div>
     </div>

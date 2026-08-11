@@ -28,6 +28,31 @@ export function Repurpose() {
   }, []);
 
 
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 100 * 1024 * 1024) {
+      setError('File size must be under 100MB.');
+      return;
+    }
+
+    if (file.type.startsWith('text/')) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const text = event.target?.result as string;
+        setContent(text);
+        setError('');
+      };
+      reader.onerror = () => {
+        setError('Failed to read the file.');
+      };
+      reader.readAsText(file);
+    } else {
+      setError('Only text files are supported for now.');
+    }
+  };
+
   const handleRepurpose = async () => {
     if (!content.trim()) {
       setError('Please provide content to repurpose.');
@@ -186,14 +211,18 @@ export function Repurpose() {
             )}
 
             {activeTab === 'file' && (
-              <div className="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-[24px] bg-slate-50 dark:bg-slate-950 p-12 text-center hover:bg-slate-100 dark:bg-slate-800 transition-colors cursor-pointer">
+              <label className="block border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-[24px] bg-slate-50 dark:bg-slate-950 p-12 text-center hover:bg-slate-100 dark:bg-slate-800 transition-colors cursor-pointer relative">
+                <input
+                  type="file"
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  accept="text/*"
+                  onChange={handleFileUpload}
+                />
                 <FileAudio className="mx-auto h-12 w-12 text-slate-400 mb-4" />
                 <p className="text-slate-600 dark:text-slate-400 font-bold mb-1">Click to upload or drag and drop</p>
-                <p className="text-slate-500 dark:text-slate-400 text-sm">MP3, MP4, or TXT up to 100MB</p>
-                <p className="mt-4 text-sm text-amber-600 bg-amber-50 p-3 rounded-lg max-w-sm mx-auto">
-                  Note: File processing is simulated in this demo. Use the "Paste Text" tab for real results.
-                </p>
-              </div>
+                <p className="text-slate-500 dark:text-slate-400 text-sm">Upload TXT file to extract content</p>
+                {content && <p className="mt-4 text-sm text-emerald-600 bg-emerald-50 p-3 rounded-lg max-w-sm mx-auto font-medium break-all border border-emerald-100">File loaded. Content length: {content.length} chars</p>}
+              </label>
             )}
             
             <div className="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800">

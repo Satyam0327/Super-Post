@@ -30,7 +30,7 @@ export function Pricing() {
               </li>
               <li className="flex gap-3">
                 <CheckCircle2 className="h-6 w-6 text-green-500 shrink-0" />
-                <span className="text-slate-700">All output formats (LinkedIn, Twitter, etc.)</span>
+                <span className="text-slate-700">All output formats (LinkedIn, X, etc.)</span>
               </li>
               <li className="flex gap-3 opacity-60">
                 <CheckCircle2 className="h-6 w-6 text-slate-400 shrink-0" />

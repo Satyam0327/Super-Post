@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 import { SEO } from '../components/SEO';
-import { CheckCircle2, ArrowRight, Zap, Youtube, FileText, Twitter, Instagram, Linkedin, Mail } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Zap, Youtube, FileText, X, Instagram, Linkedin, Mail } from 'lucide-react';
 
 
 const XLogo = ({ className }: { className?: string }) => (
@@ -25,7 +25,7 @@ export function Home() {
           "name": "How does AI content repurposing work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Our AI content repurposing tool analyzes your original video, transcript, or blog post using advanced Gemini language models. It extracts the core concepts and automatically generates optimized posts for platforms like LinkedIn, X (Twitter), and Instagram while maintaining your unique voice."
+            "text": "Our AI content repurposing tool analyzes your original video, transcript, or blog post using advanced Gemini language models. It extracts the core concepts and automatically generates optimized posts for platforms like LinkedIn, X (X), and Instagram while maintaining your unique voice."
           }
         },
         {
@@ -33,7 +33,7 @@ export function Home() {
           "name": "What platforms do you support?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We currently support generating content for X (Twitter) threads, LinkedIn professional posts, Instagram captions with emojis and hashtags, SEO-friendly blog summaries, and engaging email newsletters. We are constantly adding new platform formats."
+            "text": "We currently support generating content for X (X) threads, LinkedIn professional posts, Instagram captions with emojis and hashtags, SEO-friendly blog summaries, and engaging email newsletters. We are constantly adding new platform formats."
           }
         },
         {
@@ -125,7 +125,7 @@ export function Home() {
               <div className="w-12 h-12 bg-slate-200 rounded-xl flex items-center justify-center mb-6">
                 <XLogo className="h-6 w-6 text-black" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">X (Twitter) Threads</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">X (X) Threads</h3>
               <p className="text-slate-600 dark:text-slate-300 mb-4">Punchy, conversational posts formatted into engaging threads.</p>
               <span className="text-blue-600 font-medium text-sm bg-blue-50 px-3 py-1 rounded-full">10 Posts Generated</span>
             </div>
@@ -181,14 +181,14 @@ export function Home() {
             <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-sm border border-slate-200">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">How does AI content repurposing work?</h3>
               <p className="text-slate-600 dark:text-slate-300">
-                Our AI content repurposing tool analyzes your original video, transcript, or blog post using advanced Gemini language models. It extracts the core concepts and automatically generates optimized posts for platforms like LinkedIn, X (Twitter), and Instagram while maintaining your unique voice.
+                Our AI content repurposing tool analyzes your original video, transcript, or blog post using advanced Gemini language models. It extracts the core concepts and automatically generates optimized posts for platforms like LinkedIn, X (X), and Instagram while maintaining your unique voice.
               </p>
             </div>
             
             <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-sm border border-slate-200">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">What platforms do you support?</h3>
               <p className="text-slate-600 dark:text-slate-300">
-                We currently support generating content for X (Twitter) threads, LinkedIn professional posts, Instagram captions with emojis and hashtags, SEO-friendly blog summaries, and engaging email newsletters. We are constantly adding new platform formats.
+                We currently support generating content for X (X) threads, LinkedIn professional posts, Instagram captions with emojis and hashtags, SEO-friendly blog summaries, and engaging email newsletters. We are constantly adding new platform formats.
               </p>
             </div>
             

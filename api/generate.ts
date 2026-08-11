@@ -201,7 +201,7 @@ export default async function handler(req: any, res: any) {
 
     for (const modelName of modelsToTry) {
       try {
-        console.log(`Attempting generation with model: ${modelName}`);
+        console.log(`Attempting generation with model: \${modelName}`);
         const response = await ai.models.generateContent({
           model: modelName,
           contents: prompt,
@@ -212,11 +212,11 @@ export default async function handler(req: any, res: any) {
         });
         text = response.text;
         if (text) {
-          console.log(`Successfully generated content with ${modelName}`);
+          console.log(`Successfully generated content with \${modelName}`);
           break;
         }
       } catch (error: any) {
-        console.warn(`Model ${modelName} failed:`, error.message || error);
+        console.warn(`Model \${modelName} failed:`, error.message || error);
         lastError = error;
       }
     }
