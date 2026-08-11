@@ -48,7 +48,7 @@ export function Results() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
       </div>
     );
@@ -56,10 +56,10 @@ export function Results() {
 
   if (!job || !job.results) {
     return (
-      <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 text-center">
+      <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 dark:bg-slate-950 text-center">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">Job not found</h2>
-          <p className="text-slate-500 mb-6">The results you are looking for do not exist or have been deleted.</p>
+          <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">Job not found</h2>
+          <p className="text-slate-500 dark:text-slate-400 mb-6">The results you are looking for do not exist or have been deleted.</p>
           <Link to="/dashboard" className="text-blue-600 hover:underline">Return to Dashboard</Link>
         </div>
       </div>
@@ -119,7 +119,7 @@ export function Results() {
   return (
     <>
       <SEO title="Generated Posts | RepurposeAI" description="Your AI-generated social media posts are ready to share." />
-      <div className="min-h-screen bg-indigo-50/30 py-8 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-indigo-50 dark:bg-indigo-950/30/30 dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8">
       <style>{`
         .results-grid-layout {
           display: grid;
@@ -143,27 +143,27 @@ export function Results() {
       `}</style>
       <div className="max-w-7xl mx-auto">
         <div className="mb-6 flex items-center justify-between">
-          <Link to="/dashboard" className="flex items-center text-slate-600 hover:text-slate-900 transition-colors">
+          <Link to="/dashboard" className="flex items-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:text-white transition-colors">
             <ArrowLeft className="h-4 w-4 mr-2" /> Back to Dashboard
           </Link>
-          <div className="text-sm text-slate-500 bg-white px-4 py-2 rounded-lg border border-slate-200 shadow-sm">
+          <div className="text-sm text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
             Created: {new Date(job.createdAt).toLocaleDateString()}
           </div>
         </div>
         
         <div className="results-grid-layout">
           {/* Top Banner Ad Area */}
-          <div style={{ gridArea: 'top-ad' }} className="w-full h-[90px] bg-indigo-50 border border-dashed border-indigo-200 rounded-2xl flex flex-col items-center justify-center">
+          <div style={{ gridArea: 'top-ad' }} className="w-full h-[90px] bg-indigo-50 dark:bg-indigo-950/30 border border-dashed border-indigo-200 rounded-2xl flex flex-col items-center justify-center">
             <span className="text-[10px] uppercase tracking-widest text-indigo-400 mb-1">Advertisement</span>
             <div className="text-indigo-600 font-medium text-sm">AdSense Top Banner</div>
           </div>
 
           {/* Main Content Area */}
           <div style={{ gridArea: 'main' }}>
-            <div className="bg-white rounded-[32px] shadow-sm border border-slate-200 p-8">
+            <div className="bg-white dark:bg-slate-900 rounded-[32px] shadow-sm border border-slate-200 dark:border-slate-800 p-8">
               
               {/* Tab Navigation */}
-              <div className="flex flex-wrap gap-1 bg-indigo-50 p-1 rounded-xl w-full mb-8">
+              <div className="flex flex-wrap gap-1 bg-indigo-50 dark:bg-indigo-950/30 p-1 rounded-xl w-full mb-8">
                 {tabs.map((tab) => {
                   const Icon = tab.icon;
                   return (
@@ -172,8 +172,8 @@ export function Results() {
                       onClick={() => setActiveTab(tab.id)}
                       className={`flex-1 min-w-[120px] px-4 py-2 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 whitespace-nowrap transition-all ${
                         activeTab === tab.id
-                          ? 'bg-white shadow-sm text-violet-600'
-                          : 'text-slate-500 hover:text-violet-500'
+                          ? 'bg-white dark:bg-slate-900 shadow-sm text-violet-600'
+                          : 'text-slate-500 dark:text-slate-400 hover:text-violet-500'
                       }`}
                     >
                       <Icon className={`h-4 w-4 ${activeTab === tab.id ? 'text-violet-600' : 'text-slate-400'}`} />
@@ -214,14 +214,14 @@ export function Results() {
                 )}
 
                 {activeTab === 'email' && (
-                  <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                  <div className="bg-white dark:bg-slate-900 p-6 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
                     <div className="mb-4">
-                      <span className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1 block">Subject Line</span>
-                      <p className="font-semibold text-slate-900 text-lg">{results.email_newsletter.subject}</p>
+                      <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1 block">Subject Line</span>
+                      <p className="font-semibold text-slate-900 dark:text-white text-lg">{results.email_newsletter.subject}</p>
                     </div>
                     <div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1 block">Body</span>
-                      <p className="text-slate-700 whitespace-pre-wrap leading-relaxed">{results.email_newsletter.body}</p>
+                      <span className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1 block">Body</span>
+                      <p className="text-slate-700 dark:text-slate-300 whitespace-pre-wrap leading-relaxed">{results.email_newsletter.body}</p>
                     </div>
                     <div className="mt-6 flex justify-end">
                       <button
@@ -236,23 +236,23 @@ export function Results() {
                 )}
                 
                 {activeTab === 'insights' && (
-                  <div className="bg-white p-8 rounded-xl border border-indigo-100 shadow-sm">
-                    <h3 className="text-xl font-bold text-slate-900 mb-6">Key Insights</h3>
+                  <div className="bg-white dark:bg-slate-900 p-8 rounded-xl border border-indigo-100 shadow-sm">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Key Insights</h3>
                     <ul className="space-y-4 mb-10">
                       {results.key_insights.map((insight: string, idx: number) => (
                         <li key={idx} className="flex gap-3">
                           <CheckCircle2 className="h-6 w-6 text-fuchsia-500 shrink-0" />
-                          <span className="text-slate-700">{insight}</span>
+                          <span className="text-slate-700 dark:text-slate-300">{insight}</span>
                         </li>
                       ))}
                     </ul>
                     
-                    <h3 className="text-xl font-bold text-slate-900 mb-6">Actionable Tips</h3>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Actionable Tips</h3>
                     <ul className="space-y-4">
                       {results.actionable_tips.map((tip: string, idx: number) => (
                         <li key={idx} className="flex gap-3">
                           <Zap className="h-6 w-6 text-amber-500 shrink-0" />
-                          <span className="text-slate-700">{tip}</span>
+                          <span className="text-slate-700 dark:text-slate-300">{tip}</span>
                         </li>
                       ))}
                     </ul>
@@ -263,20 +263,20 @@ export function Results() {
           </div>
           
           {/* Bottom Native Ad */}
-          <div style={{ gridArea: 'bottom-ad' }} className="w-full h-[120px] bg-indigo-50 border border-dashed border-indigo-200 rounded-2xl flex flex-col items-center justify-center">
+          <div style={{ gridArea: 'bottom-ad' }} className="w-full h-[120px] bg-indigo-50 dark:bg-indigo-950/30 border border-dashed border-indigo-200 rounded-2xl flex flex-col items-center justify-center">
             <span className="text-[10px] uppercase tracking-widest text-indigo-400 mb-1">Advertisement</span>
             <div className="text-indigo-600 font-medium">AdSense Bottom Banner</div>
           </div>
 
           {/* Sidebar Area */}
           <div style={{ gridArea: 'sidebar' }} className="space-y-6">
-            <div className="bg-white p-6 rounded-[24px] shadow-sm border border-slate-200">
-              <h3 className="font-bold text-slate-800 mb-4">Export Options</h3>
+            <div className="bg-white dark:bg-slate-900 p-6 rounded-[24px] shadow-sm border border-slate-200 dark:border-slate-800">
+              <h3 className="font-bold text-slate-800 dark:text-slate-200 mb-4">Export Options</h3>
               <div className="space-y-3">
                 <button onClick={downloadAsTxt} className="w-full bg-violet-600 text-white px-4 py-3 rounded-xl text-sm font-bold hover:bg-violet-700 transition-colors flex justify-center items-center gap-2 shadow-sm">
                   <FileText className="h-4 w-4" /> Download as TXT
                 </button>
-                <Link to="/repurpose" className="w-full bg-white border border-slate-300 text-slate-700 px-4 py-3 rounded-xl text-sm font-bold hover:bg-slate-50 transition-colors flex justify-center items-center gap-2">
+                <Link to="/repurpose" className="w-full bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 px-4 py-3 rounded-xl text-sm font-bold hover:bg-slate-50 dark:bg-slate-950 transition-colors flex justify-center items-center gap-2">
                   Create Another Job
                 </Link>
               </div>
@@ -285,7 +285,7 @@ export function Results() {
             {/* Sidebar Ad */}
             <div className="w-full h-[250px] bg-fuchsia-50 border border-dashed border-fuchsia-200 rounded-[24px] flex flex-col items-center justify-center p-6 text-center">
               <span className="text-[10px] uppercase tracking-widest text-fuchsia-400 mb-2">Advertisement</span>
-              <div className="w-full aspect-[4/3] bg-white rounded-lg mb-4 flex items-center justify-center border border-fuchsia-100 shadow-sm">
+              <div className="w-full aspect-[4/3] bg-white dark:bg-slate-900 rounded-lg mb-4 flex items-center justify-center border border-fuchsia-100 shadow-sm">
                 <div className="text-sm font-bold text-fuchsia-600">AdSense Sidebar</div>
               </div>
             </div>
@@ -314,15 +314,15 @@ function ResultCard({ text, index, onCopy, copied, platform }: { key?: string | 
   const getPlatformStyles = () => {
     switch (platform) {
       case 'twitter':
-        return 'bg-white text-slate-800 border-l-4 border-black';
+        return 'bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border-l-4 border-black';
       case 'linkedin':
-        return 'bg-slate-50 text-slate-900 border-t-4 border-[#0A66C2] shadow-md';
+        return 'bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-t-4 border-[#0A66C2] shadow-md';
       case 'instagram':
-        return 'bg-white text-slate-800 border-t-4 border-pink-500 shadow-md';
+        return 'bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border-t-4 border-pink-500 shadow-md';
       case 'blog':
-        return 'bg-amber-50 text-slate-800 border-2 border-amber-200';
+        return 'bg-amber-50 text-slate-800 dark:text-slate-200 border-2 border-amber-200';
       default:
-        return 'bg-white text-slate-800 border border-slate-200';
+        return 'bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800';
     }
   };
 
@@ -375,7 +375,7 @@ function ResultCard({ text, index, onCopy, copied, platform }: { key?: string | 
                 navigator.share({ title: 'RepurposeAI Post', text: text }).catch(console.error);
               }
             }}
-            className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm"
+            className="flex items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm"
             title="Share to Platform"
           >
             <ExternalLink className="h-4 w-4" />
@@ -384,7 +384,7 @@ function ResultCard({ text, index, onCopy, copied, platform }: { key?: string | 
         )}
         <button
           onClick={handleDownload}
-          className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm"
+          className="flex items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm"
           title="Download as Image"
         >
           <Download className="h-4 w-4" />
@@ -393,7 +393,7 @@ function ResultCard({ text, index, onCopy, copied, platform }: { key?: string | 
 
         <button
           onClick={onCopy}
-          className="flex items-center gap-1.5 text-sm font-medium text-slate-600 hover:text-violet-600 transition-colors bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm"
+          className="flex items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-violet-600 transition-colors bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm"
         >
           {copied ? <CheckCircle2 className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
           {copied ? <span className="text-emerald-600">Copied!</span> : <span>Copy Text</span>}

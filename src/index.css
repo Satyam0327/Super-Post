@@ -12,3 +12,5 @@
 .progress-shimmer {
   animation: shimmer 2s linear infinite;
 }
+
+@custom-variant dark (&:is(.dark *));

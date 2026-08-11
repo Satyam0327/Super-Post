@@ -99,11 +99,11 @@ export function Repurpose() {
   return (
     <>
       <SEO title="Create New Job | RepurposeAI" description="Paste your video URL or text content to generate 30+ optimized social media posts using AI." />
-      <div className="min-h-[80vh] bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-[80vh] bg-slate-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-slate-900 mb-4">Repurpose Content</h1>
-          <p className="text-lg text-slate-600">Paste your content below and let AI create 30+ posts for you.</p>
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Repurpose Content</h1>
+          <p className="text-lg text-slate-600 dark:text-slate-400">Paste your content below and let AI create 30+ posts for you.</p>
         </div>
 
         {error && (
@@ -113,25 +113,25 @@ export function Repurpose() {
           </div>
         )}
 
-        <div className="bg-white rounded-[32px] shadow-sm border border-slate-200 p-8 mb-8">
+        <div className="bg-white dark:bg-slate-900 rounded-[32px] shadow-sm border border-slate-200 dark:border-slate-800 p-8 mb-8">
           {/* Tabs */}
-          <div className="flex gap-1 bg-slate-100 p-1 rounded-xl w-fit mb-8 mx-auto">
+          <div className="flex gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl w-fit mb-8 mx-auto">
             <button
-              className={`px-6 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all ${activeTab === 'url' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
+              className={`px-6 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all ${activeTab === 'url' ? 'bg-white dark:bg-slate-900 shadow-sm text-blue-600' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-300'}`}
               onClick={() => setActiveTab('url')}
             >
               <Youtube className="h-4 w-4" />
               YouTube URL
             </button>
             <button
-              className={`px-6 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all ${activeTab === 'file' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
+              className={`px-6 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all ${activeTab === 'file' ? 'bg-white dark:bg-slate-900 shadow-sm text-blue-600' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-300'}`}
               onClick={() => setActiveTab('file')}
             >
               <FileAudio className="h-4 w-4" />
               Upload File
             </button>
             <button
-              className={`px-6 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all ${activeTab === 'text' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
+              className={`px-6 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all ${activeTab === 'text' ? 'bg-white dark:bg-slate-900 shadow-sm text-blue-600' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-300'}`}
               onClick={() => setActiveTab('text')}
             >
               <AlignLeft className="h-4 w-4" />
@@ -145,7 +145,7 @@ export function Repurpose() {
               <select
                 value={contentType}
                 onChange={(e) => setContentType(e.target.value)}
-                className="block w-full px-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                className="block w-full px-4 py-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-800 dark:text-slate-200 appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
               >
                 <option>Blog Post</option>
                 <option>YouTube Video Transcript</option>
@@ -160,12 +160,12 @@ export function Repurpose() {
                 <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Source Content</label>
                 <textarea
                   rows={8}
-                  className="block w-full px-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                  className="block w-full px-4 py-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                   placeholder="Paste your article, blog post, or transcript here..."
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                 ></textarea>
-                <p className="mt-2 text-xs text-slate-500 text-right">{content.length} characters</p>
+                <p className="mt-2 text-xs text-slate-500 dark:text-slate-400 text-right">{content.length} characters</p>
               </div>
             )}
 
@@ -174,7 +174,7 @@ export function Repurpose() {
                 <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">YouTube URL</label>
                 <input
                   type="url"
-                  className="w-full px-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
+                  className="w-full px-4 py-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                   placeholder="https://www.youtube.com/watch?v=..."
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
@@ -186,17 +186,17 @@ export function Repurpose() {
             )}
 
             {activeTab === 'file' && (
-              <div className="border-2 border-dashed border-slate-300 rounded-[24px] bg-slate-50 p-12 text-center hover:bg-slate-100 transition-colors cursor-pointer">
+              <div className="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-[24px] bg-slate-50 dark:bg-slate-950 p-12 text-center hover:bg-slate-100 dark:bg-slate-800 transition-colors cursor-pointer">
                 <FileAudio className="mx-auto h-12 w-12 text-slate-400 mb-4" />
-                <p className="text-slate-600 font-bold mb-1">Click to upload or drag and drop</p>
-                <p className="text-slate-500 text-sm">MP3, MP4, or TXT up to 100MB</p>
+                <p className="text-slate-600 dark:text-slate-400 font-bold mb-1">Click to upload or drag and drop</p>
+                <p className="text-slate-500 dark:text-slate-400 text-sm">MP3, MP4, or TXT up to 100MB</p>
                 <p className="mt-4 text-sm text-amber-600 bg-amber-50 p-3 rounded-lg max-w-sm mx-auto">
                   Note: File processing is simulated in this demo. Use the "Paste Text" tab for real results.
                 </p>
               </div>
             )}
             
-            <div className="mt-8 pt-8 border-t border-slate-100">
+            <div className="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800">
               
             {loading ? (
               <div className="w-full">
@@ -206,7 +206,7 @@ export function Repurpose() {
                     {progress || 'Processing...'}
                   </span>
                 </div>
-                <div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden relative">
+                <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3 overflow-hidden relative">
                   <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 h-3 rounded-full absolute top-0 left-0 progress-shimmer" style={{ width: '100%', backgroundSize: '200% 100%' }}></div>
                 </div>
               </div>
@@ -226,9 +226,9 @@ export function Repurpose() {
         </div>
         
         {/* Ad Placeholder */}
-        <div className="mt-12 max-w-[728px] h-[90px] mx-auto bg-slate-100 rounded border border-dashed border-slate-300 flex flex-col items-center justify-center">
+        <div className="mt-12 max-w-[728px] h-[90px] mx-auto bg-slate-100 dark:bg-slate-800 rounded border border-dashed border-slate-300 dark:border-slate-700 flex flex-col items-center justify-center">
           <span className="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Advertisement</span>
-          <div className="text-slate-500 font-medium">AdSense Banner (728x90)</div>
+          <div className="text-slate-500 dark:text-slate-400 font-medium">AdSense Banner (728x90)</div>
         </div>
       </div>
     </div>

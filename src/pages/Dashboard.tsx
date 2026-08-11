@@ -75,7 +75,7 @@ export function Dashboard() {
     return (
     <>
       <SEO title="Dashboard | RepurposeAI" description="View your content repurposing history and manage your generated posts." />
-      <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
       </div>
         </>
@@ -87,12 +87,12 @@ export function Dashboard() {
   const isFreePlan = userData?.plan === 'free';
 
   return (
-    <div className="min-h-[80vh] bg-slate-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-[80vh] bg-slate-50 dark:bg-slate-950 py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900">Dashboard</h1>
-            <p className="text-slate-600 mt-1">Welcome back, {user?.displayName || 'Creator'}</p>
+            <h1 className="text-3xl font-bold text-slate-900 dark:text-white">Dashboard</h1>
+            <p className="text-slate-600 dark:text-slate-400 mt-1">Welcome back, {user?.displayName || 'Creator'}</p>
           </div>
           <Link
             to="/repurpose"
@@ -104,14 +104,14 @@ export function Dashboard() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-          <div className="bg-white p-6 rounded-[24px] shadow-sm border border-slate-200">
-            <h3 className="text-slate-500 text-sm font-bold mb-4">Usage This Month</h3>
+          <div className="bg-white dark:bg-slate-900 p-6 rounded-[24px] shadow-sm border border-slate-200 dark:border-slate-800">
+            <h3 className="text-slate-500 dark:text-slate-400 text-sm font-bold mb-4">Usage This Month</h3>
             <div className="flex items-end gap-2 mb-4">
-              <span className="text-4xl font-bold text-slate-900">{jobsUsed}</span>
-              <span className="text-slate-500 text-lg mb-1">/ {isFreePlan ? jobsLimit : '∞'} jobs</span>
+              <span className="text-4xl font-bold text-slate-900 dark:text-white">{jobsUsed}</span>
+              <span className="text-slate-500 dark:text-slate-400 text-lg mb-1">/ {isFreePlan ? jobsLimit : '∞'} jobs</span>
             </div>
             {isFreePlan && (
-              <div className="w-full bg-slate-100 rounded-full h-2.5 overflow-hidden">
+              <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 overflow-hidden">
                 <div 
                   className="bg-gradient-to-r from-blue-500 to-purple-500 h-full rounded-full transition-all" 
                   style={{ width: `${Math.min((jobsUsed / jobsLimit) * 100, 100)}%` }}
@@ -141,14 +141,14 @@ export function Dashboard() {
           )}
         </div>
 
-        <h2 className="text-xl font-bold text-slate-900 mb-4">Recent Jobs</h2>
+        <h2 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Recent Jobs</h2>
         {jobs.length === 0 ? (
-          <div className="bg-white p-12 rounded-[24px] shadow-sm border border-slate-200 text-center">
-            <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="bg-white dark:bg-slate-900 p-12 rounded-[24px] shadow-sm border border-slate-200 dark:border-slate-800 text-center">
+            <div className="w-16 h-16 bg-slate-50 dark:bg-slate-950 rounded-full flex items-center justify-center mx-auto mb-4">
               <FileText className="h-8 w-8 text-slate-400" />
             </div>
-            <h3 className="text-xl font-bold text-slate-900 mb-2">No jobs yet</h3>
-            <p className="text-slate-500 mb-6 max-w-md mx-auto">
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">No jobs yet</h3>
+            <p className="text-slate-500 dark:text-slate-400 mb-6 max-w-md mx-auto">
               You haven't repurposed any content yet. Start your first job to see the magic happen.
             </p>
             <Link
@@ -159,13 +159,13 @@ export function Dashboard() {
             </Link>
           </div>
         ) : (
-          <div className="bg-white rounded-[24px] shadow-sm border border-slate-200 overflow-hidden">
+          <div className="bg-white dark:bg-slate-900 rounded-[24px] shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
             <ul className="divide-y divide-slate-100">
               {jobs.map((job) => (
-                <li key={job.id} className="p-6 hover:bg-slate-50 transition-colors flex items-center justify-between">
+                <li key={job.id} className="p-6 hover:bg-slate-50 dark:bg-slate-950 transition-colors flex items-center justify-between">
                   <div>
-                    <h3 className="text-lg font-bold text-slate-800 mb-1">{job.title || 'Untitled Content'}</h3>
-                    <div className="flex items-center gap-4 text-sm text-slate-500">
+                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">{job.title || 'Untitled Content'}</h3>
+                    <div className="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400">
                       <span className="capitalize">{job.contentType}</span>
                       <span>•</span>
                       <span>{new Date(job.createdAt).toLocaleDateString()}</span>

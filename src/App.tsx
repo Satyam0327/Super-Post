@@ -4,6 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import ReactGA from 'react-ga4';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router';
+import { ThemeProvider } from './components/ThemeProvider';
 import { Layout } from './Layout';
 import { Home } from './pages/Home';
 import { Login } from './pages/Login';
@@ -29,6 +30,7 @@ export default function App() {
   }, []);
 
   return (
+    <ThemeProvider defaultTheme="system" storageKey="repurpose-theme">
     <HelmetProvider>
       <RouteTracker />
       <Routes>
@@ -44,5 +46,6 @@ export default function App() {
         </Route>
       </Routes>
     </HelmetProvider>
+    </ThemeProvider>
   );
 }

@@ -82,12 +82,12 @@ export function Signup() {
   return (
     <>
       <SEO title="Sign Up | RepurposeAI" description="Create a free RepurposeAI account and start turning videos into social media posts today." />
-      <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-10 rounded-[32px] shadow-sm border border-slate-200">
+      <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-md w-full space-y-8 bg-white dark:bg-slate-900 p-10 rounded-[32px] shadow-sm border border-slate-200 dark:border-slate-800">
         <div className="text-center">
           <Rocket className="mx-auto h-12 w-12 text-blue-600" />
-          <h2 className="mt-6 text-3xl font-extrabold text-slate-900">Create your account</h2>
-          <p className="mt-2 text-sm text-slate-600">
+          <h2 className="mt-6 text-3xl font-extrabold text-slate-900 dark:text-white">Create your account</h2>
+          <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
             Already have an account?{' '}
             <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">
               Log in
@@ -102,7 +102,7 @@ export function Signup() {
           )}
           <div className="space-y-4">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">
+              <label htmlFor="name" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Full Name
               </label>
               <input
@@ -111,14 +111,14 @@ export function Signup() {
                 type="text"
                 autoComplete="name"
                 required
-                className="appearance-none block w-full px-4 py-3 border border-slate-300 rounded-lg shadow-sm placeholder-slate-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="appearance-none block w-full px-4 py-3 border border-slate-300 dark:border-slate-700 rounded-lg shadow-sm placeholder-slate-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 placeholder="John Doe"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="email-address" className="block text-sm font-medium text-slate-700 mb-1">
+              <label htmlFor="email-address" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Email address
               </label>
               <input
@@ -127,14 +127,14 @@ export function Signup() {
                 type="email"
                 autoComplete="email"
                 required
-                className="appearance-none block w-full px-4 py-3 border border-slate-300 rounded-lg shadow-sm placeholder-slate-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="appearance-none block w-full px-4 py-3 border border-slate-300 dark:border-slate-700 rounded-lg shadow-sm placeholder-slate-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 placeholder="you@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-slate-700 mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">
                 Password
               </label>
               <input
@@ -143,7 +143,7 @@ export function Signup() {
                 type="password"
                 autoComplete="new-password"
                 required
-                className="appearance-none block w-full px-4 py-3 border border-slate-300 rounded-lg shadow-sm placeholder-slate-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                className="appearance-none block w-full px-4 py-3 border border-slate-300 dark:border-slate-700 rounded-lg shadow-sm placeholder-slate-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -163,10 +163,10 @@ export function Signup() {
           
           <div className="relative">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-200"></div>
+              <div className="w-full border-t border-slate-200 dark:border-slate-800"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-2 bg-white text-slate-500">Or continue with</span>
+              <span className="px-2 bg-white dark:bg-slate-900 text-slate-500 dark:text-slate-400">Or continue with</span>
             </div>
           </div>
           
@@ -175,7 +175,7 @@ export function Signup() {
               type="button"
               onClick={handleGoogleSignup}
               disabled={loading}
-              className="w-full flex justify-center items-center gap-2 py-4 border border-slate-300 rounded-xl bg-white text-slate-700 font-bold text-lg hover:bg-slate-50 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+              className="w-full flex justify-center items-center gap-2 py-4 border border-slate-300 dark:border-slate-700 rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-300 font-bold text-lg hover:bg-slate-50 dark:bg-slate-950 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path
