@@ -71,7 +71,7 @@ export function Results() {
   const downloadAsTxt = () => {
     if (!job || !job.results) return;
     
-    let textContent = `=== REPURPOSE AI RESULTS ===\n\n`;
+    let textContent = `=== SUPER-POST RESULTS ===\n\n`;
     textContent += `Original Content Type: ${job.contentType}\n\n`;
     
     textContent += `--- LINKEDIN POSTS ---\n\n`;
@@ -100,7 +100,7 @@ export function Results() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `repurpose-ai-${job.id}.txt`;
+    a.download = `super-post-${job.id}.txt`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -118,7 +118,7 @@ export function Results() {
 
   return (
     <>
-      <SEO title="Generated Posts | RepurposeAI" description="Your AI-generated social media posts are ready to share." />
+      <SEO title="Generated Posts | Super-Post" description="Your AI-generated social media posts are ready to share." />
       <div className="min-h-screen bg-indigo-50 dark:bg-indigo-950/30/30 dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8">
       <style>{`
         .results-grid-layout {
@@ -354,7 +354,7 @@ function ResultCard({ text, index, onCopy, copied, platform }: { key?: string | 
         </p>
         <div className="mt-6 pt-4 border-t border-black/10 flex items-center justify-between opacity-60 text-xs font-medium">
           <span>{new Date().toLocaleDateString()}</span>
-          <span>RepurposeAI</span>
+          <span>Super-Post</span>
         </div>
 
       </div>
@@ -372,7 +372,7 @@ function ResultCard({ text, index, onCopy, copied, platform }: { key?: string | 
               } else if (platform === 'linkedin') {
                 window.open(`https://www.linkedin.com/feed/?shareActive=true&text=${encodedText}`, '_blank');
               } else if (navigator.share) {
-                navigator.share({ title: 'RepurposeAI Post', text: text }).catch(console.error);
+                navigator.share({ title: 'Super-Post Post', text: text }).catch(console.error);
               }
             }}
             className="flex items-center gap-1.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors bg-white dark:bg-slate-900 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm"

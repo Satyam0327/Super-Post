@@ -52,7 +52,7 @@ export function Repurpose() {
         throw new Error('You have reached your limit of 3 free jobs this month. Please upgrade to Pro.');
       }
 
-      setProgress('Analyzing content with Gemini AI...');
+      setProgress('Analyzing content with Super-Post');
       
       // Call our backend API
       const response = await fetch('/api/generate', {
@@ -98,11 +98,11 @@ export function Repurpose() {
 
   return (
     <>
-      <SEO title="Create New Job | RepurposeAI" description="Paste your video URL or text content to generate 30+ optimized social media posts using AI." />
+      <SEO title="Create New Job | Super-Post" description="Paste your video URL or text content to generate 30+ optimized social media posts using AI." />
       <div className="min-h-[80vh] bg-slate-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Repurpose Content</h1>
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Super-Post Content</h1>
           <p className="text-lg text-slate-600 dark:text-slate-400">Paste your content below and let AI create 30+ posts for you.</p>
         </div>
 
@@ -199,15 +199,22 @@ export function Repurpose() {
             <div className="mt-8 pt-8 border-t border-slate-100 dark:border-slate-800">
               
             {loading ? (
-              <div className="w-full">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="text-sm font-semibold text-blue-600 animate-pulse flex items-center gap-2">
-                    <Sparkles className="h-4 w-4 animate-spin" />
-                    {progress || 'Processing...'}
-                  </span>
+              <div className="w-full flex flex-col items-center justify-center py-8">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-[20px] flex items-center justify-center mb-6 shadow-xl shadow-blue-500/20 animate-bounce">
+                  <span className="text-white font-bold text-5xl">S</span>
                 </div>
-                <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-3 overflow-hidden relative">
-                  <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 h-3 rounded-full absolute top-0 left-0 progress-shimmer" style={{ width: '100%', backgroundSize: '200% 100%' }}></div>
+                <div className="w-full max-w-sm mx-auto">
+                  <div className="flex items-center justify-center mb-4">
+                    <span className="text-lg font-bold text-slate-800 dark:text-slate-200">
+                      Super-Post at work...
+                    </span>
+                  </div>
+                  <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 overflow-hidden relative mb-3">
+                    <div className="bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 h-2 rounded-full absolute top-0 left-0 progress-shimmer" style={{ width: '100%', backgroundSize: '200% 100%' }}></div>
+                  </div>
+                  <div className="text-center text-sm font-semibold text-blue-600">
+                    {progress}
+                  </div>
                 </div>
               </div>
             ) : (
@@ -217,7 +224,7 @@ export function Repurpose() {
                 className="w-full py-5 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl font-bold text-lg shadow-lg shadow-blue-200 hover:opacity-90 transition-opacity flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 <Sparkles className="h-5 w-5" />
-                Repurpose Now
+                Super-Post Now
               </button>
             )}
 

@@ -74,7 +74,7 @@ export function Dashboard() {
   if (loading) {
     return (
     <>
-      <SEO title="Dashboard | RepurposeAI" description="View your content repurposing history and manage your generated posts." />
+      <SEO title="Dashboard | Super-Post" description="View your content repurposing history and manage your generated posts." />
       <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
       </div>
@@ -99,7 +99,7 @@ export function Dashboard() {
             className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2.5 rounded-xl font-bold hover:opacity-90 transition-opacity shadow-sm flex items-center gap-2"
           >
             <PlusCircle className="h-5 w-5" />
-            New Repurpose Job
+            New Super-Post Job
           </Link>
         </div>
 

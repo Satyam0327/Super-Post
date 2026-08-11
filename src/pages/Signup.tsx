@@ -81,7 +81,7 @@ export function Signup() {
 
   return (
     <>
-      <SEO title="Sign Up | RepurposeAI" description="Create a free RepurposeAI account and start turning videos into social media posts today." />
+      <SEO title="Sign Up | Super-Post" description="Create a free Super-Post account and start turning videos into social media posts today." />
       <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white dark:bg-slate-900 p-10 rounded-[32px] shadow-sm border border-slate-200 dark:border-slate-800">
         <div className="text-center">

@@ -50,7 +50,7 @@ export function Home() {
     const softwareSchema = {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "RepurposeAI",
+      "name": "Super-Post",
       "operatingSystem": "Web",
       "applicationCategory": "BusinessApplication",
       "description": "AI-powered content repurposing for creators, marketers, and small businesses.",
@@ -72,7 +72,7 @@ export function Home() {
     <div>
 
       <SEO 
-        title="RepurposeAI | Turn 1 Video into 30 Social Posts using AI"
+        title="Super-Post | Turn 1 Video into 30 Social Posts using AI"
         description="Our AI content repurposing tool turns your videos and podcasts into LinkedIn posts, X threads, and Instagram captions. Maximize your reach in minutes."
         schema={[faqSchema, softwareSchema]}
       />

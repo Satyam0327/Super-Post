@@ -1,5 +1,5 @@
 {
-  "name": "RepurposeAI",
+  "name": "Super-Post",
   "description": "An AI-powered SaaS that transforms long-form content into multiple social media posts.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

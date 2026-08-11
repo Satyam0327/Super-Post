@@ -11,11 +11,11 @@ interface SEOProps {
 }
 
 export function SEO({
-  title = 'RepurposeAI - Turn 1 Video into 30 Social Posts',
+  title = 'Super-Post - Turn 1 Video into 30 Social Posts',
   description = 'AI-powered content repurposing for creators, marketers, and small businesses. Maximize your reach without the extra work.',
-  canonicalUrl = 'https://repurposeai.com',
+  canonicalUrl = 'https://super-post.com',
   type = 'website',
-  image = 'https://repurposeai.com/og-image.png',
+  image = 'https://super-post.com/og-image.png',
   schema,
 }: SEOProps) {
   return (

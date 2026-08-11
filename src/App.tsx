@@ -30,7 +30,7 @@ export default function App() {
   }, []);
 
   return (
-    <ThemeProvider defaultTheme="system" storageKey="repurpose-theme">
+    <ThemeProvider defaultTheme="system" storageKey="super-post-theme">
     <HelmetProvider>
       <RouteTracker />
       <Routes>

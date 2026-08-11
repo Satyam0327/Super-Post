@@ -10,7 +10,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-2">
             <Link to="/" className="flex items-center gap-2 mb-4">
               <Rocket className="h-6 w-6 text-blue-600" />
-              <span className="font-bold text-xl tracking-tight text-slate-900 dark:text-white">RepurposeAI</span>
+              <span className="font-bold text-xl tracking-tight text-slate-900 dark:text-white">Super-Post</span>
             </Link>
             <p className="text-slate-500 dark:text-slate-400 text-sm max-w-sm">
               Turn your long-form videos, podcasts, and blogs into weeks of high-converting social media content in just a few clicks.
@@ -35,7 +35,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-slate-200 dark:border-slate-800 pt-8 flex items-center justify-between">
           <p className="text-base text-slate-400">
-            &copy; {new Date().getFullYear()} RepurposeAI. All rights reserved.
+            &copy; {new Date().getFullYear()} Super-Post. All rights reserved.
           </p>
         </div>
       </div>

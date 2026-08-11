@@ -51,7 +51,7 @@ export function Login() {
 
   return (
     <>
-      <SEO title="Log In | RepurposeAI" description="Log in to your RepurposeAI account to access your dashboard and generated posts." />
+      <SEO title="Log In | Super-Post" description="Log in to your Super-Post account to access your dashboard and generated posts." />
       <div className="min-h-[80vh] flex items-center justify-center bg-slate-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8 bg-white dark:bg-slate-900 p-10 rounded-[32px] shadow-sm border border-slate-200 dark:border-slate-800">
         <div className="text-center">

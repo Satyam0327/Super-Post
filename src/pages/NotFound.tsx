@@ -7,7 +7,7 @@ export function NotFound() {
   return (
     <>
       <SEO 
-        title="404: Page Not Found | RepurposeAI"
+        title="404: Page Not Found | Super-Post"
         description="The page you are looking for does not exist."
       />
       <div className="min-h-[70vh] flex flex-col items-center justify-center px-4 text-center">

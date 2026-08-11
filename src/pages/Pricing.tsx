@@ -6,7 +6,7 @@ import { CheckCircle2, Zap } from 'lucide-react';
 export function Pricing() {
   return (
     <>
-      <SEO title="Pricing | RepurposeAI" description="Simple, transparent pricing for AI content repurposing. Start free and scale as you grow." />
+      <SEO title="Pricing | Super-Post" description="Simple, transparent pricing for AI content repurposing. Start free and scale as you grow." />
       <div className="min-h-screen bg-slate-50 py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16">
