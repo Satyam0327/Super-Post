@@ -21,7 +21,7 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
-    const { content, contentType } = req.body;
+    const { content, contentType, brandVoice } = req.body;
     
     if (!content || !contentType) {
       return res.status(400).json({ error: 'Missing content or contentType' });
@@ -117,6 +117,21 @@ export default async function handler(req: any, res: any) {
       }
     });
 
+    const brandVoiceInstruction = brandVoice?.trim() ? `
+      BRAND VOICE INSTRUCTIONS:
+      Analyze these sample posts from the user to learn their brand voice:
+      ${brandVoice}
+      
+      Extract and strictly adhere to their:
+      - Tone: (e.g., Professional, casual, humorous, or educational)
+      - Vocabulary: (e.g., Simple words or industry jargon)
+      - Sentence structure: (e.g., Short punchy sentences or long detailed ones)
+      - Emoji usage: (e.g., Heavy, moderate, or none)
+      - Hashtag style: (e.g., 3-5 relevant or 10+ trending)
+      
+      Generate all the following content matching this exact style. Do not use generic AI phrasing.
+    ` : '';
+
     const prompt = `
       You are an expert content strategist and copywriter. 
       Input type: ${contentType}
@@ -132,6 +147,8 @@ export default async function handler(req: any, res: any) {
       - 3 actionable tips or takeaways
       - 2 storytelling moments or examples
       
+      ${brandVoiceInstruction}
+
       Then generate the following content pieces:
       
       LINKEDIN POSTS (5 posts):

@@ -28,32 +28,32 @@ export function Navbar() {
   };
 
   return (
-    <nav className="bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50">
+    <nav className="bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 sticky top-0 z-50 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xl">S</span>
+            <Link to="/" className="flex items-center gap-2 group">
+              <div className="w-8 h-8 bg-slate-900 dark:bg-white rounded-lg flex items-center justify-center transition-transform group-hover:scale-105">
+                <span className="text-white dark:text-slate-900 font-serif font-bold text-xl">S</span>
               </div>
-              <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">Super-Post</span>
+              <span className="text-xl font-serif font-bold text-slate-900 dark:text-white tracking-tight">Super-Post</span>
             </Link>
           </div>
           
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-8">
             <ThemeToggle />
-            <Link to="/pricing" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">Pricing</Link>
+            <Link to="/pricing" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">Pricing</Link>
             {user ? (
               <>
-                <Link to="/repurpose" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">New Job</Link>
-                <Link to="/dashboard" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 flex items-center gap-1 transition-colors">
+                <Link to="/repurpose" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">New Job</Link>
+                <Link to="/dashboard" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5 transition-colors">
                   <LayoutDashboard className="h-4 w-4" />
                   Dashboard
                 </Link>
                 <button
                   onClick={handleSignOut}
-                  className="flex items-center gap-1 text-sm text-slate-600 dark:text-slate-300 hover:text-red-600 dark:hover:text-red-400 font-medium transition-colors"
+                  className="flex items-center gap-1.5 text-sm text-slate-600 dark:text-slate-300 hover:text-rose-600 dark:hover:text-rose-400 font-medium transition-colors"
                 >
                   <LogOut className="h-4 w-4" />
                   Sign Out
@@ -61,10 +61,10 @@ export function Navbar() {
               </>
             ) : (
               <>
-                <Link to="/login" className="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Log In</Link>
+                <Link to="/login" className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white transition-colors">Log In</Link>
                 <Link
                   to="/signup"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-5 py-2.5 rounded-xl text-sm font-bold shadow-sm hover:opacity-90 transition-opacity"
+                  className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-5 py-2 rounded-lg text-sm font-semibold hover:opacity-90 transition-opacity"
                 >
                   Start Free
                 </Link>

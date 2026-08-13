@@ -77,92 +77,92 @@ export function Home() {
         schema={[faqSchema, softwareSchema]}
       />
       {/* Hero Section */}
-      <section className="bg-slate-50 dark:bg-slate-800 pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="bg-slate-50 dark:bg-slate-950 pt-32 pb-24 px-4 sm:px-6 lg:px-8 font-sans">
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-8">
-            Turn 1 Video into <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">30 Social Posts</span> in 2 Minutes
+          <h1 className="text-6xl md:text-8xl font-serif font-bold text-slate-900 dark:text-white tracking-tight mb-8 leading-[1.1]">
+            Turn 1 Video into <span className="text-slate-500 dark:text-slate-400">30 Social Posts</span> in 2 Minutes
           </h1>
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
             AI-powered content repurposing for creators, marketers, and small businesses. Maximize your reach without the extra work.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               to={user ? "/dashboard" : "/signup"}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-opacity shadow-lg shadow-blue-200 flex items-center justify-center gap-2"
+              className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2"
             >
               {user ? 'Go to Dashboard' : 'Start Repurposing Free'} <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
               to="/pricing"
-              className="bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-200 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 dark:bg-slate-800 transition-colors shadow-sm flex items-center justify-center"
+              className="bg-transparent text-slate-900 dark:text-white border-2 border-slate-200 dark:border-slate-800 px-10 py-5 rounded-2xl font-bold text-lg hover:border-slate-900 dark:hover:border-white transition-colors flex items-center justify-center"
             >
               View Pricing
             </Link>
           </div>
-          <p className="mt-6 text-sm text-slate-500 dark:text-slate-400 font-medium">No credit card required. Free tier available.</p>
+          <p className="mt-8 text-sm text-slate-500 dark:text-slate-400 font-medium">No credit card required. Free tier available.</p>
         </div>
       </section>
 
       {/* Output Formats Section */}
-      <section className="py-20 bg-white dark:bg-slate-900">
+      <section className="py-24 bg-white dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Generate Content For Every Platform</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300">One input, optimized outputs for all your social channels.</p>
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-4">Generate Content For Every Platform</h2>
+            <p className="text-xl text-slate-600 dark:text-slate-400">One input, optimized outputs for all your social channels.</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-100 hover:border-blue-200 transition-colors">
-              <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
-                <Linkedin className="h-6 w-6 text-blue-600" />
+            <div className="bg-slate-50 dark:bg-slate-950 rounded-[32px] p-10 border border-slate-200/50 dark:border-slate-800/50 hover:border-slate-300 dark:hover:border-slate-700 transition-colors group">
+              <div className="w-14 h-14 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <Linkedin className="h-6 w-6 text-slate-900 dark:text-white" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">LinkedIn Posts</h3>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">Professional, insightful posts with strong hooks designed for B2B engagement.</p>
-              <span className="text-blue-600 font-medium text-sm bg-blue-50 px-3 py-1 rounded-full">5 Posts Generated</span>
+              <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">LinkedIn Posts</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Professional, insightful posts with strong hooks designed for B2B engagement.</p>
+              <span className="text-slate-900 dark:text-white font-medium text-sm bg-slate-200/50 dark:bg-slate-800/50 px-4 py-1.5 rounded-full">5 Posts Generated</span>
             </div>
             
-            <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-100 hover:border-blue-200 transition-colors">
-              <div className="w-12 h-12 bg-slate-200 rounded-xl flex items-center justify-center mb-6">
-                <XLogo className="h-6 w-6 text-black" />
+            <div className="bg-slate-50 dark:bg-slate-950 rounded-[32px] p-10 border border-slate-200/50 dark:border-slate-800/50 hover:border-slate-300 dark:hover:border-slate-700 transition-colors group">
+              <div className="w-14 h-14 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <XLogo className="h-6 w-6 text-slate-900 dark:text-white" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">X (X) Threads</h3>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">Punchy, conversational posts formatted into engaging threads.</p>
-              <span className="text-blue-600 font-medium text-sm bg-blue-50 px-3 py-1 rounded-full">10 Posts Generated</span>
+              <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">X (Twitter) Threads</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Punchy, conversational posts formatted into engaging threads.</p>
+              <span className="text-slate-900 dark:text-white font-medium text-sm bg-slate-200/50 dark:bg-slate-800/50 px-4 py-1.5 rounded-full">10 Posts Generated</span>
             </div>
 
-            <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-100 hover:border-blue-200 transition-colors">
-              <div className="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mb-6">
-                <Instagram className="h-6 w-6 text-pink-500" />
+            <div className="bg-slate-50 dark:bg-slate-950 rounded-[32px] p-10 border border-slate-200/50 dark:border-slate-800/50 hover:border-slate-300 dark:hover:border-slate-700 transition-colors group">
+              <div className="w-14 h-14 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <Instagram className="h-6 w-6 text-slate-900 dark:text-white" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Instagram Captions</h3>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">Casual, emoji-rich captions optimized for visual platforms with hashtags.</p>
-              <span className="text-blue-600 font-medium text-sm bg-blue-50 px-3 py-1 rounded-full">3 Captions Generated</span>
+              <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">Instagram Captions</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Casual, emoji-rich captions optimized for visual platforms with hashtags.</p>
+              <span className="text-slate-900 dark:text-white font-medium text-sm bg-slate-200/50 dark:bg-slate-800/50 px-4 py-1.5 rounded-full">3 Captions Generated</span>
             </div>
             
-            <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-100 hover:border-blue-200 transition-colors">
-              <div className="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mb-6">
-                <FileText className="h-6 w-6 text-orange-500" />
+            <div className="bg-slate-50 dark:bg-slate-950 rounded-[32px] p-10 border border-slate-200/50 dark:border-slate-800/50 hover:border-slate-300 dark:hover:border-slate-700 transition-colors group">
+              <div className="w-14 h-14 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <FileText className="h-6 w-6 text-slate-900 dark:text-white" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Blog Summaries</h3>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">SEO-friendly articles summarizing the core concepts with clear headings.</p>
-              <span className="text-blue-600 font-medium text-sm bg-blue-50 px-3 py-1 rounded-full">1 Article Generated</span>
+              <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">Blog Summaries</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">SEO-friendly articles summarizing the core concepts with clear headings.</p>
+              <span className="text-slate-900 dark:text-white font-medium text-sm bg-slate-200/50 dark:bg-slate-800/50 px-4 py-1.5 rounded-full">1 Article Generated</span>
             </div>
             
-            <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-100 hover:border-blue-200 transition-colors">
-              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
-                <Mail className="h-6 w-6 text-purple-600" />
+            <div className="bg-slate-50 dark:bg-slate-950 rounded-[32px] p-10 border border-slate-200/50 dark:border-slate-800/50 hover:border-slate-300 dark:hover:border-slate-700 transition-colors group">
+              <div className="w-14 h-14 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                <Mail className="h-6 w-6 text-slate-900 dark:text-white" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Email Newsletters</h3>
-              <p className="text-slate-600 dark:text-slate-300 mb-4">Personal, engaging snippets perfect for your mailing list updates.</p>
-              <span className="text-blue-600 font-medium text-sm bg-blue-50 px-3 py-1 rounded-full">1 Email Generated</span>
+              <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">Email Newsletters</h3>
+              <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">Personal, engaging snippets perfect for your mailing list updates.</p>
+              <span className="text-slate-900 dark:text-white font-medium text-sm bg-slate-200/50 dark:bg-slate-800/50 px-4 py-1.5 rounded-full">1 Email Generated</span>
             </div>
             
-            <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-8 border border-slate-100 hover:border-blue-200 transition-colors flex flex-col justify-center items-center text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
-                <Zap className="h-8 w-8 text-green-500" />
+            <div className="bg-slate-900 dark:bg-white rounded-[32px] p-10 border border-slate-800 dark:border-slate-200 flex flex-col justify-center items-center text-center">
+              <div className="w-20 h-20 bg-white/10 dark:bg-slate-900/10 rounded-full flex items-center justify-center mb-6">
+                <Zap className="h-10 w-10 text-white dark:text-slate-900" />
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">Powered by Gemini</h3>
-              <p className="text-slate-600 dark:text-slate-300">Advanced AI reasoning ensures your core message isn't lost in translation.</p>
+              <h3 className="text-3xl font-serif font-bold text-white dark:text-slate-900 mb-3">Powered by Gemini</h3>
+              <p className="text-slate-300 dark:text-slate-600 text-lg">Advanced AI reasoning ensures your core message isn't lost in translation.</p>
             </div>
           </div>
         </div>
@@ -170,31 +170,31 @@ export function Home() {
 
       
       {/* FAQ Section */}
-      <section className="py-20 bg-slate-50 dark:bg-slate-800">
+      <section className="py-24 bg-slate-50 dark:bg-slate-950">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300">Everything you need to know about our AI content repurposing.</p>
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-4">Frequently Asked Questions</h2>
+            <p className="text-xl text-slate-600 dark:text-slate-400">Everything you need to know about our AI content repurposing.</p>
           </div>
           
           <div className="space-y-6">
-            <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-sm border border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">How does AI content repurposing work?</h3>
-              <p className="text-slate-600 dark:text-slate-300">
+            <div className="bg-white dark:bg-slate-900 rounded-[32px] p-10 border border-slate-200/50 dark:border-slate-800/50">
+              <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">How does AI content repurposing work?</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
                 Our AI content repurposing tool analyzes your original video, transcript, or blog post using advanced Gemini language models. It extracts the core concepts and automatically generates optimized posts for platforms like LinkedIn, X (X), and Instagram while maintaining your unique voice.
               </p>
             </div>
             
-            <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-sm border border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">What platforms do you support?</h3>
-              <p className="text-slate-600 dark:text-slate-300">
+            <div className="bg-white dark:bg-slate-900 rounded-[32px] p-10 border border-slate-200/50 dark:border-slate-800/50">
+              <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">What platforms do you support?</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
                 We currently support generating content for X (X) threads, LinkedIn professional posts, Instagram captions with emojis and hashtags, SEO-friendly blog summaries, and engaging email newsletters. We are constantly adding new platform formats.
               </p>
             </div>
             
-            <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 shadow-sm border border-slate-200">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">Why should I repurpose my content?</h3>
-              <p className="text-slate-600 dark:text-slate-300">
+            <div className="bg-white dark:bg-slate-900 rounded-[32px] p-10 border border-slate-200/50 dark:border-slate-800/50">
+              <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-4">Why should I repurpose my content?</h3>
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-lg">
                 Repurposing content maximizes your reach without requiring you to create net-new ideas. By transforming a single YouTube video or podcast into 30+ social media posts, you maintain a consistent posting schedule, reach different audience segments, and improve your overall SEO footprint.
               </p>
             </div>
@@ -203,13 +203,13 @@ export function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-32 bg-slate-900 dark:bg-white text-white dark:text-slate-900">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Stop wasting hours on social media copy</h2>
-          <p className="text-xl text-slate-300 mb-10">Join thousands of creators working smarter, not harder.</p>
+          <h2 className="text-5xl md:text-6xl font-serif font-bold mb-8 tracking-tight">Stop wasting hours on social media copy</h2>
+          <p className="text-2xl text-slate-300 dark:text-slate-600 mb-12 font-medium">Join thousands of creators working smarter, not harder.</p>
           <Link
             to={user ? "/dashboard" : "/signup"}
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-4 rounded-xl font-bold text-lg hover:opacity-90 transition-opacity shadow-lg shadow-purple-900/50 inline-block"
+            className="bg-white dark:bg-slate-900 text-slate-900 dark:text-white px-10 py-5 rounded-2xl font-bold text-xl hover:scale-105 transition-transform inline-block"
           >
             {user ? 'Go to Dashboard' : 'Create Your Free Account'}
           </Link>

@@ -119,7 +119,7 @@ export function Results() {
   return (
     <>
       <SEO title="Generated Posts | Super-Post" description="Your AI-generated social media posts are ready to share." />
-      <div className="min-h-screen bg-indigo-50 dark:bg-indigo-950/30/30 dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950 py-8 px-4 sm:px-6 lg:px-8 font-sans">
       <style>{`
         .results-grid-layout {
           display: grid;
@@ -143,40 +143,40 @@ export function Results() {
       `}</style>
       <div className="max-w-7xl mx-auto">
         <div className="mb-6 flex items-center justify-between">
-          <Link to="/dashboard" className="flex items-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:text-white transition-colors">
+          <Link to="/dashboard" className="flex items-center text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-medium">
             <ArrowLeft className="h-4 w-4 mr-2" /> Back to Dashboard
           </Link>
-          <div className="text-sm text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
+          <div className="text-sm font-medium text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm">
             Created: {new Date(job.createdAt).toLocaleDateString()}
           </div>
         </div>
         
         <div className="results-grid-layout">
           {/* Top Banner Ad Area */}
-          <div style={{ gridArea: 'top-ad' }} className="w-full h-[90px] bg-indigo-50 dark:bg-indigo-950/30 border border-dashed border-indigo-200 rounded-2xl flex flex-col items-center justify-center">
-            <span className="text-[10px] uppercase tracking-widest text-indigo-400 mb-1">Advertisement</span>
-            <div className="text-indigo-600 font-medium text-sm">AdSense Top Banner</div>
+          <div style={{ gridArea: 'top-ad' }} className="w-full h-[90px] bg-slate-100 dark:bg-slate-900 border border-dashed border-slate-300 dark:border-slate-700 rounded-2xl flex flex-col items-center justify-center">
+            <span className="text-[10px] uppercase tracking-widest text-slate-400 mb-1">Advertisement</span>
+            <div className="text-slate-500 dark:text-slate-400 font-medium text-sm">AdSense Top Banner</div>
           </div>
 
           {/* Main Content Area */}
           <div style={{ gridArea: 'main' }}>
-            <div className="bg-white dark:bg-slate-900 rounded-[32px] shadow-sm border border-slate-200 dark:border-slate-800 p-8">
+            <div className="bg-white dark:bg-slate-900 rounded-[32px] shadow-sm border border-slate-200/50 dark:border-slate-800/50 p-8 md:p-12">
               
               {/* Tab Navigation */}
-              <div className="flex flex-wrap gap-1 bg-indigo-50 dark:bg-indigo-950/30 p-1 rounded-xl w-full mb-8">
+              <div className="flex flex-wrap gap-2 bg-slate-50 dark:bg-slate-950 p-2 rounded-2xl w-full mb-10 border border-slate-100 dark:border-slate-800">
                 {tabs.map((tab) => {
                   const Icon = tab.icon;
                   return (
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex-1 min-w-[120px] px-4 py-2 rounded-lg text-sm font-semibold flex items-center justify-center gap-2 whitespace-nowrap transition-all ${
+                      className={`flex-1 min-w-[120px] px-4 py-3 rounded-xl text-sm font-bold flex items-center justify-center gap-2 whitespace-nowrap transition-all ${
                         activeTab === tab.id
-                          ? 'bg-white dark:bg-slate-900 shadow-sm text-violet-600'
-                          : 'text-slate-500 dark:text-slate-400 hover:text-violet-500'
+                          ? 'bg-white dark:bg-slate-800 shadow-sm text-slate-900 dark:text-white border border-slate-200 dark:border-slate-700'
+                          : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-900'
                       }`}
                     >
-                      <Icon className={`h-4 w-4 ${activeTab === tab.id ? 'text-violet-600' : 'text-slate-400'}`} />
+                      <Icon className={`h-4 w-4 ${activeTab === tab.id ? 'text-slate-900 dark:text-white' : 'text-slate-400'}`} />
                       {tab.label}
                     </button>
                   );
@@ -236,18 +236,18 @@ export function Results() {
                 )}
                 
                 {activeTab === 'insights' && (
-                  <div className="bg-white dark:bg-slate-900 p-8 rounded-xl border border-indigo-100 shadow-sm">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Key Insights</h3>
-                    <ul className="space-y-4 mb-10">
+                  <div className="bg-white dark:bg-slate-900 p-8 rounded-[24px] border border-slate-200 dark:border-slate-800 shadow-sm">
+                    <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-8">Key Insights</h3>
+                    <ul className="space-y-6 mb-12">
                       {results.key_insights.map((insight: string, idx: number) => (
-                        <li key={idx} className="flex gap-3">
-                          <CheckCircle2 className="h-6 w-6 text-fuchsia-500 shrink-0" />
-                          <span className="text-slate-700 dark:text-slate-300">{insight}</span>
+                        <li key={idx} className="flex gap-4 items-start">
+                          <CheckCircle2 className="h-6 w-6 text-slate-900 dark:text-white shrink-0 mt-0.5" />
+                          <span className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg">{insight}</span>
                         </li>
                       ))}
                     </ul>
                     
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Actionable Tips</h3>
+                    <h3 className="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-8">Actionable Tips</h3>
                     <ul className="space-y-4">
                       {results.actionable_tips.map((tip: string, idx: number) => (
                         <li key={idx} className="flex gap-3">
@@ -299,6 +299,81 @@ export function Results() {
 
 function ResultCard({ text, index, onCopy, copied, platform }: { key?: string | number, text: string, index: number, onCopy: () => void, copied: boolean, platform?: string }) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const [isPosting, setIsPosting] = useState(false);
+  const [postSuccess, setPostSuccess] = useState(false);
+
+  useEffect(() => {
+    const handleMessage = (event: MessageEvent) => {
+      // Allow localhost or .run.app origins
+      const origin = event.origin;
+      if (!origin.endsWith('.run.app') && !origin.includes('localhost')) {
+        return;
+      }
+      
+      if (event.data?.type === 'OAUTH_AUTH_SUCCESS') {
+        if (event.data.platform === platform) {
+          localStorage.setItem(`${platform}_token`, event.data.token);
+          // Try posting again after successful auth
+          handleDirectPost();
+        }
+      } else if (event.data?.type === 'OAUTH_AUTH_ERROR') {
+        alert('Authentication failed: ' + event.data.error);
+        setIsPosting(false);
+      }
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [platform, text]);
+
+  const handleDirectPost = async () => {
+    if (!platform || (platform !== 'linkedin' && platform !== 'twitter')) return;
+    
+    setIsPosting(true);
+    const token = localStorage.getItem(`${platform}_token`);
+    
+    if (!token) {
+      // Need to authenticate first
+      try {
+        const response = await fetch(`/api/auth/${platform}/url`);
+        if (!response.ok) throw new Error('Failed to get auth URL');
+        const { url } = await response.json();
+        
+        const authWindow = window.open(url, 'oauth_popup', 'width=600,height=700');
+        if (!authWindow) {
+          alert('Please allow popups to connect your account.');
+          setIsPosting(false);
+        }
+        // The popup will postMessage back on success, triggering handleMessage
+      } catch (error) {
+        console.error('OAuth error:', error);
+        setIsPosting(false);
+      }
+      return;
+    }
+
+    // Have token, try posting
+    try {
+      const response = await fetch(`/api/post/${platform}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, token })
+      });
+      
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.error || 'Failed to post');
+      }
+      
+      setPostSuccess(true);
+      setTimeout(() => setPostSuccess(false), 3000);
+    } catch (error: any) {
+      console.error('Post error:', error);
+      alert('Post Failed: ' + error.message + '\n\n(Your session may have expired or the permissions were missing. Try reconnecting.)');
+      localStorage.removeItem(`${platform}_token`);
+    } finally {
+      setIsPosting(false);
+    }
+  };
 
   const handleDownload = () => {
     if (!cardRef.current) return;
@@ -314,26 +389,26 @@ function ResultCard({ text, index, onCopy, copied, platform }: { key?: string | 
   const getPlatformStyles = () => {
     switch (platform) {
       case 'twitter':
-        return 'bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border-l-4 border-black';
+        return 'bg-white dark:bg-slate-950 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 border-l-4 hover:border-l-black dark:hover:border-l-white';
       case 'linkedin':
-        return 'bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border-t-4 border-[#0A66C2] shadow-md';
+        return 'bg-white dark:bg-slate-950 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 border-l-4 hover:border-l-[#0A66C2]';
       case 'instagram':
-        return 'bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border-t-4 border-pink-500 shadow-md';
+        return 'bg-white dark:bg-slate-950 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 border-l-4 hover:border-l-pink-500';
       case 'blog':
-        return 'bg-amber-50 text-slate-800 dark:text-slate-200 border-2 border-amber-200';
+        return 'bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 font-serif';
       default:
-        return 'bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-800';
+        return 'bg-white dark:bg-slate-950 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800';
     }
   };
 
   const getPlatformIcon = () => {
     switch (platform) {
       case 'twitter':
-        return <XLogo className="h-5 w-5 text-black" />;
+        return <XLogo className="h-5 w-5 text-slate-900 dark:text-white" />;
       case 'linkedin':
-        return <Linkedin className="h-5 w-5 text-[#0A66C2]" />;
+        return <Linkedin className="h-5 w-5 text-slate-900 dark:text-white" />;
       case 'instagram':
-        return <Instagram className="h-5 w-5 text-pink-500" />;
+        return <Instagram className="h-5 w-5 text-slate-900 dark:text-white" />;
       default:
         return null;
     }
@@ -363,6 +438,11 @@ function ResultCard({ text, index, onCopy, copied, platform }: { key?: string | 
       <div className="flex flex-wrap items-center justify-end gap-2 px-1">
         <span className="text-xs text-slate-400 font-medium mr-auto mb-2 sm:mb-0 w-full sm:w-auto">{text.length} chars</span>
         
+        {/* Post Now feature temporarily removed */}
+        {/* {(platform === 'twitter' || platform === 'linkedin') && (
+          <button ... >
+        )} */}
+
         {(platform === 'twitter' || platform === 'linkedin' || (typeof navigator !== 'undefined' && navigator.share)) && (
           <button
             onClick={() => {
