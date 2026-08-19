@@ -55,5 +55,19 @@ service cloud.firestore {
         && isValidJob(incoming());
       allow delete: if isSignedIn() && isValidId(jobId) && resource.data.userId == request.auth.uid;
     }
+
+    function isValidTranscript(data) {
+      return data.keys().hasAll(['videoId', 'transcript', 'createdAt'])
+        && data.videoId is string && data.videoId.size() <= 50
+        && data.transcript is string && data.transcript.size() <= 500000
+        && data.createdAt is string;
+    }
+
+    match /transcripts/{videoId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidId(videoId) && isValidTranscript(incoming());
+      allow update: if false; // Transcripts are immutable
+      allow delete: if false;
+    }
   }
 }

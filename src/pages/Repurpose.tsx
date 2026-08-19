@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { SEO } from '../components/SEO';
 import { useNavigate } from 'react-router';
 import ReactGA from 'react-ga4';
-import { Youtube, FileAudio, AlignLeft, Sparkles, AlertCircle } from 'lucide-react';
+import { Youtube, FileAudio, AlignLeft, Sparkles, AlertCircle, ChevronDown } from 'lucide-react';
 import { auth, db } from '../lib/firebase';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { doc, getDoc, updateDoc, collection, addDoc } from 'firebase/firestore';
@@ -168,17 +168,22 @@ export function Repurpose() {
           <div>
             <div className="mb-6">
               <label className="block text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Content Type</label>
-              <select
-                value={contentType}
-                onChange={(e) => setContentType(e.target.value)}
-                className="block w-full px-4 py-4 bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-800 dark:text-white appearance-none focus:outline-none focus:ring-4 focus:ring-slate-900/5 dark:focus:ring-white/10 focus:border-slate-900 dark:focus:border-white transition-all"
-              >
-                <option>Blog Post</option>
-                <option>YouTube Video Transcript</option>
-                <option>Podcast Transcript</option>
-                <option>Newsletter</option>
-                <option>Other</option>
-              </select>
+              <div className="relative group">
+                <select
+                  value={contentType}
+                  onChange={(e) => setContentType(e.target.value)}
+                  className="block w-full px-5 py-4 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 rounded-2xl text-slate-800 dark:text-white appearance-none focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 dark:focus:border-blue-500 transition-all font-medium shadow-sm cursor-pointer relative z-10"
+                >
+                  <option>Blog Post</option>
+                  <option>YouTube Video Transcript</option>
+                  <option>Podcast Transcript</option>
+                  <option>Newsletter</option>
+                  <option>Other</option>
+                </select>
+                <div className="absolute inset-y-0 right-0 flex items-center pr-5 pointer-events-none text-slate-400 group-hover:text-blue-500 transition-colors z-20">
+                  <ChevronDown className="h-5 w-5" />
+                </div>
+              </div>
             </div>
 
             {activeTab === 'text' && (

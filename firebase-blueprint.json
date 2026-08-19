@@ -26,6 +26,17 @@
         "createdAt": { "type": "string", "format": "date-time" }
       },
       "required": ["userId", "contentType", "createdAt"]
+    },
+    "TranscriptCache": {
+      "title": "TranscriptCache",
+      "description": "Global cache for YouTube transcripts to save API calls",
+      "type": "object",
+      "properties": {
+        "videoId": { "type": "string", "maxLength": 50 },
+        "transcript": { "type": "string", "maxLength": 500000 },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["videoId", "transcript", "createdAt"]
     }
   },
   "firestore": {
@@ -36,6 +47,10 @@
     "/jobs/{jobId}": {
       "schema": { "$ref": "#/entities/Job" },
       "description": "Jobs collection"
+    },
+    "/transcripts/{videoId}": {
+      "schema": { "$ref": "#/entities/TranscriptCache" },
+      "description": "Global transcript cache"
     }
   }
 }

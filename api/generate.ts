@@ -1,5 +1,32 @@
 import { GoogleGenAI, Type } from '@google/genai';
 import { YoutubeTranscript } from 'youtube-transcript';
+import { initializeApp, getApps } from 'firebase-admin/app';
+import { getFirestore, Firestore } from 'firebase-admin/firestore';
+
+// Initialize Firebase Admin lazily to avoid startup crashes if env variables are missing
+let firebaseDb: Firestore | null = null;
+function getFirebaseDb() {
+  if (!firebaseDb) {
+    if (!getApps().length) {
+      // In development/AI studio environment, we'll need basic initialization for Firestore
+      // When deployed properly, this would use default credentials
+      try {
+        initializeApp({
+          projectId: 'nifty-backbone-r83b3',
+        });
+        firebaseDb = getFirestore();
+        firebaseDb.settings({ databaseId: 'ai-studio-0524ddbb-7588-4600-be6b-e0c560bde6a9' });
+      } catch (e) {
+        console.warn("Failed to initialize Firebase Admin", e);
+        return null;
+      }
+    } else {
+      firebaseDb = getFirestore();
+      firebaseDb.settings({ databaseId: 'ai-studio-0524ddbb-7588-4600-be6b-e0c560bde6a9' });
+    }
+  }
+  return firebaseDb;
+}
 
 export default async function handler(req: any, res: any) {
   // Add CORS headers for Vercel
@@ -34,76 +61,112 @@ export default async function handler(req: any, res: any) {
     // Attempt to fetch transcript if the content is a youtube URL
     if (content.includes('youtube.com/watch') || content.includes('youtu.be/')) {
       isYoutube = true;
-      try {
-        console.log("Fetching YouTube transcript for:", content);
-        const transcript = await YoutubeTranscript.fetchTranscript(content);
-        contentToAnalyze = transcript.map(t => t.text).join(' ');
-        console.log("Transcript fetched successfully, length:", contentToAnalyze.length);
-      } catch (e: any) {
-        console.warn("YouTube captions disabled, trying fallback...");
-        const match = content.match(/(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/))([\w-]+)/);
-        const videoId = match ? match[1] : null;
+      const match = content.match(/(?:youtu\.be\/|youtube\.com\/(?:.*v=|.*\/))([\w-]+)/);
+      const videoId = match ? match[1] : null;
 
-        if (videoId) {
-          try {
-            const supadataKey = process.env.SUPADATA_API_KEY || 'sd_b188aefbdb4e624f24d34c3d3f5deb13';
-            const supadataResponse = await fetch(
-              `https://api.supadata.ai/v1/youtube/transcript?videoId=${videoId}`,
-              {
-                headers: {
-                  'X-API-Key': supadataKey,
-                },
-              }
-            );
-            
-            if (supadataResponse.ok) {
-              const data = await supadataResponse.json();
-              if (data.content && Array.isArray(data.content)) {
-                contentToAnalyze = data.content.map((t: any) => t.text).join(' ');
-                console.log("Supadata Transcript fetched successfully, length:", contentToAnalyze.length);
-                hasTranscript = true;
-              } else if (data.transcript) {
-                contentToAnalyze = data.transcript;
-                console.log("Supadata Transcript fetched successfully, length:", contentToAnalyze.length);
-                hasTranscript = true;
-              } else {
-                throw new Error("Invalid Supadata response format");
-              }
-            } else {
-              throw new Error("Supadata API failed");
-            }
-          } catch (supaError: any) {
-            console.log("Supadata failed, trying Turnscribe...");
-            try {
-              const turnscribeResponse = await fetch('https://api.turnscribe.com/transcribe', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  url: content,
-                  format: 'text',
-                }),
-              });
-              
-              if (turnscribeResponse.ok) {
-                const data = await turnscribeResponse.json();
-                contentToAnalyze = data.transcript;
-                console.log("Turnscribe Transcript fetched successfully");
-                hasTranscript = true;
-              } else {
-                throw new Error("Turnscribe API failed");
-              }
-            } catch (turnscribeError: any) {
-              console.warn("All transcript methods failed.");
-              hasTranscript = false;
-              contentToAnalyze = content; // Fallback to passing the URL itself
-            }
+      // 1. Check Global Cache First
+      let cachedTranscript = null;
+      const db = getFirebaseDb();
+      if (videoId && db) {
+        try {
+          const cacheDoc = await db.collection('transcripts').doc(videoId).get();
+          if (cacheDoc.exists) {
+            cachedTranscript = cacheDoc.data()?.transcript;
+            console.log(`Global Cache HIT for videoId: ${videoId}`);
           }
-        } else {
-          console.warn("Could not extract videoId. All transcript methods failed.");
-          hasTranscript = false;
-          contentToAnalyze = content;
+        } catch (e) {
+          console.warn("Error reading from transcript cache:", e);
+        }
+      }
+
+      if (cachedTranscript) {
+        contentToAnalyze = cachedTranscript;
+        hasTranscript = true;
+      } else {
+        // 2. Fetch from External APIs
+        try {
+          console.log("Fetching YouTube transcript for:", content);
+          const transcript = await YoutubeTranscript.fetchTranscript(content);
+          contentToAnalyze = transcript.map(t => t.text).join(' ');
+          console.log("Transcript fetched successfully, length:", contentToAnalyze.length);
+        } catch (e: any) {
+          console.warn("YouTube captions disabled, trying fallback...");
+          
+          if (videoId) {
+            try {
+              const supadataKey = process.env.SUPADATA_API_KEY || 'sd_b188aefbdb4e624f24d34c3d3f5deb13';
+              const supadataResponse = await fetch(
+                `https://api.supadata.ai/v1/youtube/transcript?videoId=${videoId}`,
+                {
+                  headers: {
+                    'X-API-Key': supadataKey,
+                  },
+                }
+              );
+              
+              if (supadataResponse.ok) {
+                const data = await supadataResponse.json();
+                if (data.content && Array.isArray(data.content)) {
+                  contentToAnalyze = data.content.map((t: any) => t.text).join(' ');
+                  console.log("Supadata Transcript fetched successfully, length:", contentToAnalyze.length);
+                  hasTranscript = true;
+                } else if (data.transcript) {
+                  contentToAnalyze = data.transcript;
+                  console.log("Supadata Transcript fetched successfully, length:", contentToAnalyze.length);
+                  hasTranscript = true;
+                } else {
+                  throw new Error("Invalid Supadata response format");
+                }
+              } else {
+                throw new Error("Supadata API failed");
+              }
+            } catch (supaError: any) {
+              console.log("Supadata failed, trying Turnscribe...");
+              try {
+                const turnscribeResponse = await fetch('https://api.turnscribe.com/transcribe', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    url: content,
+                    format: 'text',
+                  }),
+                });
+                
+                if (turnscribeResponse.ok) {
+                  const data = await turnscribeResponse.json();
+                  contentToAnalyze = data.transcript;
+                  console.log("Turnscribe Transcript fetched successfully");
+                  hasTranscript = true;
+                } else {
+                  throw new Error("Turnscribe API failed");
+                }
+              } catch (turnscribeError: any) {
+                console.warn("All transcript methods failed.");
+                hasTranscript = false;
+                contentToAnalyze = content; // Fallback to passing the URL itself
+              }
+            }
+          } else {
+            console.warn("Could not extract videoId. All transcript methods failed.");
+            hasTranscript = false;
+            contentToAnalyze = content;
+          }
+        }
+
+        // 3. Save to Global Cache
+        if (hasTranscript && isYoutube && videoId && db && contentToAnalyze !== content) {
+          try {
+            await db.collection('transcripts').doc(videoId).set({
+              videoId: videoId,
+              transcript: contentToAnalyze,
+              createdAt: new Date().toISOString()
+            });
+            console.log(`Saved transcript to Global Cache for videoId: ${videoId}`);
+          } catch (e) {
+            console.warn("Failed to write to transcript cache:", e);
+          }
         }
       }
     }
@@ -212,7 +275,7 @@ export default async function handler(req: any, res: any) {
     };
 
     
-    const modelsToTry = ['gemini-2.5-flash', 'gemini-2.5-pro', 'gemini-1.5-flash', 'gemini-1.5-pro'];
+    const modelsToTry = ['gemini-3.7-flash', 'gemini-flash-latest', 'gemini-3.1-flash-lite'];
     let text = null;
     let lastError = null;
 
