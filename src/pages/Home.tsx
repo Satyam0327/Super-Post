@@ -4,7 +4,7 @@ import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../lib/firebase';
 import { SEO } from '../components/SEO';
 import { CheckCircle2, ArrowRight, Zap, Youtube, FileText, X, Instagram, Linkedin, Mail } from 'lucide-react';
-
+import { motion, useScroll, useTransform } from 'motion/react';
 
 const XLogo = ({ className }: { className?: string }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -14,7 +14,25 @@ const XLogo = ({ className }: { className?: string }) => (
 
 export function Home() {
   const [user, setUser] = useState<User | null>(null);
+  const { scrollY } = useScroll();
+  
+  // Advanced 3D Parallax Effects
+  // The hero section tilts back, scales down, and fades out as you scroll down
+  const heroRotateX = useTransform(scrollY, [0, 800], [0, 20]);
+  const heroScale = useTransform(scrollY, [0, 800], [1, 0.9]);
+  const heroY = useTransform(scrollY, [0, 800], [0, 100]);
+  const heroOpacity = useTransform(scrollY, [0, 400, 700], [1, 1, 0]); // Stays fully visible much longer
 
+  // Individual element parallax for depth
+  const titleY = useTransform(scrollY, [0, 500], [0, 40]);
+  const textY = useTransform(scrollY, [0, 500], [0, 60]);
+  const buttonsY = useTransform(scrollY, [0, 500], [0, 0]); // Keep buttons completely static relative to container so they don't run away
+
+  // Background Blobs morphing
+  const blob1Y = useTransform(scrollY, [0, 800], [0, -200]);
+  const blob1Scale = useTransform(scrollY, [0, 800], [1, 1.5]);
+  const blob2Y = useTransform(scrollY, [0, 800], [0, -300]);
+  const blob2Scale = useTransform(scrollY, [0, 800], [1, 1.2]);
 
     const faqSchema = {
       "@context": "https://schema.org",
@@ -77,34 +95,72 @@ export function Home() {
         schema={[faqSchema, softwareSchema]}
       />
       {/* Hero Section */}
-      <section className="bg-slate-50 dark:bg-slate-950 pt-32 pb-24 px-4 sm:px-6 lg:px-8 font-sans">
-        <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-6xl md:text-8xl font-serif font-bold text-slate-900 dark:text-white tracking-tight mb-8 leading-[1.1]">
+      <section className="bg-slate-50 dark:bg-slate-950 pt-32 pb-24 px-4 sm:px-6 lg:px-8 font-sans relative overflow-hidden flex items-center min-h-[70vh]" style={{ perspective: '1200px' }}>
+        {/* Parallax Background Elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <motion.div 
+            className="absolute top-0 left-1/4 w-96 h-96 bg-slate-200/50 dark:bg-slate-800/20 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-lighten"
+            style={{ y: blob1Y, scale: blob1Scale }}
+          />
+          <motion.div 
+            className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-slate-300/30 dark:bg-slate-900/40 rounded-full blur-3xl mix-blend-multiply dark:mix-blend-lighten"
+            style={{ y: blob2Y, scale: blob2Scale }}
+          />
+        </div>
+
+        <motion.div 
+          className="max-w-5xl mx-auto text-center relative z-10 w-full"
+          style={{ 
+            y: heroY, 
+            opacity: heroOpacity, 
+            scale: heroScale, 
+            rotateX: heroRotateX,
+            transformStyle: 'preserve-3d'
+          }}
+        >
+          <motion.h1 
+            className="text-6xl md:text-8xl font-serif font-bold text-slate-900 dark:text-white tracking-tight mb-8 leading-[1.1]"
+            style={{ y: titleY }}
+          >
             Turn 1 Video into <span className="text-slate-500 dark:text-slate-400">30 Social Posts</span> in 2 Minutes
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+          </motion.h1>
+          
+          <motion.p 
+            className="text-xl md:text-2xl text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+            style={{ y: textY }}
+          >
             AI-powered content repurposing for creators, marketers, and small businesses. Maximize your reach without the extra work.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
+          </motion.p>
+          
+          <motion.div 
+            className="flex flex-col sm:flex-row justify-center gap-4"
+            style={{ y: buttonsY }}
+          >
             <Link
               to={user ? "/dashboard" : "/signup"}
-              className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2"
+              className="bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-xl shadow-slate-900/10 dark:shadow-white/10"
             >
               {user ? 'Go to Dashboard' : 'Start Repurposing Free'} <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
               to="/pricing"
-              className="bg-transparent text-slate-900 dark:text-white border-2 border-slate-200 dark:border-slate-800 px-10 py-5 rounded-2xl font-bold text-lg hover:border-slate-900 dark:hover:border-white transition-colors flex items-center justify-center"
+              className="bg-white/50 dark:bg-slate-950/50 backdrop-blur-md text-slate-900 dark:text-white border-2 border-slate-200 dark:border-slate-800 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white dark:hover:bg-slate-900 transition-colors flex items-center justify-center"
             >
               View Pricing
             </Link>
-          </div>
-          <p className="mt-8 text-sm text-slate-500 dark:text-slate-400 font-medium">No credit card required. Free tier available.</p>
-        </div>
+          </motion.div>
+          
+          <motion.p 
+            className="mt-8 text-sm text-slate-500 dark:text-slate-400 font-medium"
+            style={{ y: buttonsY }}
+          >
+            No credit card required. Free tier available.
+          </motion.p>
+        </motion.div>
       </section>
 
-      {/* Output Formats Section */}
-      <section className="py-24 bg-white dark:bg-slate-900">
+      {/* Output Formats Section (adding relative/z-index to overlap) */}
+      <section className="py-24 bg-white dark:bg-slate-900 relative z-20 shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.05)] dark:shadow-[0_-20px_40px_-15px_rgba(0,0,0,0.3)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-20">
             <h2 className="text-4xl md:text-5xl font-serif font-bold text-slate-900 dark:text-white mb-4">Generate Content For Every Platform</h2>
